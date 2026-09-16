@@ -121,9 +121,8 @@ WHERE S.sid = R.sid
 AND R.bid = B.bid
 AND (B.color = 'red' OR B.color = 'green');
 ...
-![OUTPUT](EX2-12.png)
-# 
-(2b) 11.Find the names of sailors who have reserved both a red and a green boat.
+![OUTPUT](EX2-12.png) 
+#(2b) 11.Find the names of sailors who have reserved both a red and a green boat.
 ```
 SELECT DISTINCT s.sname
 FROM Sailors s, Reserves r, Boats b
@@ -137,7 +136,7 @@ WHERE s.sid = r.sid
 AND r.bid = b.bid
 AND b.color = 'green';
 ```
-(2b) 12. Find the sids of all sailors who have reserved red boats but not green boats.
+#(2b) 12. Find the sids of all sailors who have reserved red boats but not green boats.
 ```
 SELECT DISTINCT s.sid
 FROM Sailors s, Reserves r, Boats b
@@ -152,7 +151,7 @@ AND r.bid = b.bid
 AND b.colour = 'green';
 ```
 ![output](2b_12.png)
-(2b) 13. Find all sids of sailors who have a rating of 10 or have reserved boat 104.
+#(2b) 13. Find all sids of sailors who have a rating of 10 or have reserved boat 104.
 ```
 SELECT sid
 FROM Sailors
@@ -163,7 +162,7 @@ FROM Reserves
 WHERE bid = 104;
 ```
 ![output](2b_13.png)
-(2b) 14. Find the names of sailors who have reserved boat number 103.
+#(2b) 14. Find the names of sailors who have reserved boat number 103.
 ```
 SELECT s.sname
 FROM Sailors s
@@ -173,7 +172,7 @@ WHERE EXISTS (
 
 ```
 ![output](2b_14.png)
-(2b) 15. Find sailors whose rating is better than some sailor called Horatio.
+#(2b) 15. Find sailors whose rating is better than some sailor called Horatio.
 ```
 SELECT s.sid
 FROM Sailors s
@@ -188,7 +187,7 @@ WHERE s.rating > ANY (
 
 ```
 ![output](2b_15.png)
-(2b) 16. Find sailors whose rating is better than every sailor called Horatio.
+#(2b) 16. Find sailors whose rating is better than every sailor called Horatio.
 
 ```
 SELECT s.sid
@@ -205,7 +204,7 @@ WHERE s.rating > ALL (
 ```
 ![output](2b-16.png)
 
-(2b) 17. Find the sailors with the highest rating.
+#(2b) 17. Find the sailors with the highest rating.
 
 ```
 SELECT s.sid
@@ -220,7 +219,7 @@ WHERE s.rating >= ALL (
 ```
 ![output](2b_17.png)
 
-(2b) 18. Find the names of sailors who have reserved both a red and a green boat.
+#(2b) 18. Find the names of sailors who have reserved both a red and a green boat.
 ```
 SELECT DISTINCT s.sname
 
@@ -239,14 +238,14 @@ AND s.sid IN (
 );
 ```
 ![output](2b-18.png)
-(2b) 19. Find the sailors who have the highest rating.
+#(2b) 19. Find the sailors who have the highest rating.
 ```
 SELECT sid
 FROM Sailors
 WHERE rating = (SELECT MAX(rating) FROM Sailors);
 ```
 ![output](2b-19.png)
-(2b) 20. Find the names of sailors who have reserved both a red and a green boat.
+#(2b) 20. Find the names of sailors who have reserved both a red and a green boat.
 ```
 SELECT DISTINCT s.sname
 FROM Sailors s, Reserves r1, Boats b1, Reserves r2, Boats b2
@@ -258,7 +257,7 @@ AND r2.bid = b2.bid
 AND b2.color = 'green';
 ```
 ![output](2b-20.png)
-(2b) 21. Find the names of sailors who have reserved all boats.
+#(2b) 21. Find the names of sailors who have reserved all boats.
 ```
 SELECT s.sname
 FROM Sailors s
@@ -276,7 +275,7 @@ WHERE NOT EXISTS (
 
 ![output](2b-21.png)
 
-(2b) 22. Find the average age of all sailors.
+#(2b) 22. Find the average age of all sailors.
 ```
 
 SELECT AVG(age)
@@ -286,7 +285,7 @@ FROM Sailors;
 
 ![output](2b-22.png)
 
-(2b) 23.Find the average age of sailors with a rating of 10.
+#(2b) 23.Find the average age of sailors with a rating of 10.
 
 ```
 SELECT AVG(age)
@@ -297,7 +296,7 @@ WHERE rating = 10;
 
 ![output](2b-23.png)
 
-(2b) 24. Find the name and age of the oldest sailor.
+#(2b) 24. Find the name and age of the oldest sailor.
 ```
 
 
@@ -307,7 +306,7 @@ WHERE age = (SELECT MAX(age) FROM Sailors);
 ````
 
 ![output](2b-24.png)
-(2b) 25. Count the number of sailors.
+#(2b) 25. Count the number of sailors.
 ```
 
 SELECT COUNT(*)
@@ -315,7 +314,7 @@ FROM Sailors;
 
 ```
 ![output](2b-25.png)
-(2b) 26. Count the number of different sailor names.
+#(2b) 26. Count the number of different sailor names.
 
 ```
 SELECT COUNT(DISTINCT sname)
@@ -323,7 +322,7 @@ FROM Sailors;
 
 ```
 ![output](2b-26.png)
-(2b) 27. Find the names of sailors who are older than the oldest sailor with a rating of 10.
+#(2b) 27. Find the names of sailors who are older than the oldest sailor with a rating of 10.
 
 ```
 SELECT sname
@@ -339,7 +338,7 @@ WHERE age > (
 ```
 ![output](2b-27.png)
 
-(2b) 28. Find the age of the youngest sailor for each rating level.
+#(2b) 28. Find the age of the youngest sailor for each rating level.
 ```
 
 SELECT rating, MIN(age)
@@ -348,7 +347,7 @@ FROM sailors
 GROUP BY rating;
 ```
 ![output](2b-28.png)
-(2b) 29. Find the age of the youngest sailor who is eligible to vote (i.e., is at least 18 years old) for each rating level with at least two such sailors.
+#(2b) 29. Find the age of the youngest sailor who is eligible to vote (i.e., is at least 18 years old) for each rating level with at least two such sailors.
 
 ```
 
@@ -360,7 +359,7 @@ GROUP BY rating
 HAVING COUNT(*) >= 2;
 ```
 ![output](2b-29.png)
-(2b) 30. For each red boat, find the number of reservations for this boat.
+#(2b) 30. For each red boat, find the number of reservations for this boat.
 
 ```
 
@@ -375,7 +374,7 @@ GROUP BY b.bid;
 ```
 
 ![output](2b-30.png)
-(2b) 31. Find the average age of sailors for each rating level that has at least two sailors.
+#(2b) 31. Find the average age of sailors for each rating level that has at least two sailors.
 
 ```
 
@@ -387,7 +386,7 @@ HAVING COUNT(*) >= 2;
 ```
 
 ![output](2b-31.png)
-(2b) 32. Find the average age of sailors who are of voting age (i.e., at least 18 years old) for each rating level that has at least two sailors.
+#(2b) 32. Find the average age of sailors who are of voting age (i.e., at least 18 years old) for each rating level that has at least two sailors.
 
 ```
 SELECT rating, AVG(age)
@@ -400,7 +399,7 @@ HAVING COUNT(*) >= 2;
 ```
 ![output](2b-32.png)
 
-(2b) 33. Find the average age of sailors who are of voting age (i.e., at least 18 years old) for each rating level that has at least two such sailors.
+#(2b) 33. Find the average age of sailors who are of voting age (i.e., at least 18 years old) for each rating level that has at least two such sailors.
 ```
 
 SELECT rating, AVG(age)
@@ -413,7 +412,7 @@ HAVING COUNT(*) >= 2;
 ```
 ![output](2b-33.png)
 
-(2b) 34. Find those ratings for which the average age of sailors is the minimum over all ratings.
+#(2b) 34. Find those ratings for which the average age of sailors is the minimum over all ratings.
 ```
 
 SELECT rating
